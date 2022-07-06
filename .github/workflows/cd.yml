@@ -30,9 +30,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        if: ${{ github.event.inputs.image }}
-      
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      if: ${{ github.event.inputs.image }}
+      with:
+        go-version: 1.17
+    
+    - name: Check out code into the Go module directory
+      if: ${{ github.event.inputs.image }}
+      uses: actions/checkout@v3
+
       - name: manifest edit
         if: ${{ github.event.inputs.image }}
         run: |
