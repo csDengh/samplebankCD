@@ -31,15 +31,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
 
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      if: ${{ github.event.inputs.image }}
-      with:
-        go-version: 1.17
-    
-    - name: Check out code into the Go module directory
-      if: ${{ github.event.inputs.image }}
-      uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        if: ${{ github.event.inputs.image }}
+        with:
+          go-version: 1.17
+      
+      - name: Check out code into the Go module directory
+        if: ${{ github.event.inputs.image }}
+        uses: actions/checkout@v3
 
       - name: manifest edit
         if: ${{ github.event.inputs.image }}
