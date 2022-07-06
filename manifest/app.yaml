@@ -1,0 +1,15 @@
+apiVersion: ingressapp.app.io/v1
+kind: App
+metadata:
+  name: app-sample
+spec:
+  enable_ingress: true
+  enable_service: true
+  env:
+  - name: DB_SOURCE
+    value: postgresql://root:secret@engine-postgres/simple_bank?sslmode=disable
+  image: nginx:latest
+  port:
+  - 8090
+  - 8190
+  replicas: 2
