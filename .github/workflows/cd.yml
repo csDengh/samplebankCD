@@ -46,7 +46,7 @@ jobs:
         run: |
           IMAGE=${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }} ./main
       - name: safe
-        run: git config --global --add safe.directory /github/workspace
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v2
         # if: ${{ github.event.inputs.image }}
