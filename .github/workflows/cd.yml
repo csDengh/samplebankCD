@@ -33,22 +33,21 @@ jobs:
 
       - name: Set up Go
         uses: actions/setup-go@v3
-        # if: ${{ github.event.inputs.image }}
+        if: ${{ github.event.inputs.image }}
         with:
           go-version: 1.17
       
       - name: Check out code into the Go module directory
-        # if: ${{ github.event.inputs.image }}
         uses: actions/checkout@v3
+        if: ${{ github.event.inputs.image }}
 
       - name: manifest edit
-        # if: ${{ github.event.inputs.image }}
+        if: ${{ github.event.inputs.image }}
         run: |
           IMAGE=${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }} ./main
-      - name: safe
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Git Commit/Push Changes
         uses: actions-x/commit@v2
-        # if: ${{ github.event.inputs.image }}
+        if: ${{ github.event.inputs.image }}
         with:
           message: "cd set image to ${{ github.event.inputs.image }}:${{ github.event.inputs.sha-tag }}"
