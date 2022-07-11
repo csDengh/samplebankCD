@@ -8,7 +8,7 @@ spec:
   env:
   - name: DB_SOURCE
     value: postgresql://root:secret@engine-postgres/simple_bank?sslmode=disable
-  image: csdengh/simplebank:c5c70297650f1d913a0a4221f2717de87801f625
+  image: csdengh/simplebank:29c6f0f910f70f8361fb0afa969f47b3f3d84ddc
   port:
   - 8090
   - 8190
